@@ -1,0 +1,6 @@
+[submodule "multibuild"]
+	path = multibuild
+	url = https://github.com/matthew-brett/multibuild.git
+[submodule "muLFC"]
+	path = muLFC
+	url = https://github.com/bonfus/muLFC.git
