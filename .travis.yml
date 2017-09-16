@@ -33,13 +33,13 @@ matrix:
     # Exclude the default Python 3.5 build
     - python: 3.5
   include:
-    - os: linux
-      env:
-        - MB_PYTHON_VERSION=2.6
-    - os: linux
-      env:
-        - MB_PYTHON_VERSION=2.6
-        - PLAT=i686
+#    - os: linux
+#      env:
+#        - MB_PYTHON_VERSION=2.6
+#    - os: linux
+#      env:
+#        - MB_PYTHON_VERSION=2.6
+#        - PLAT=i686
     - os: linux
       env: MB_PYTHON_VERSION=2.7
     - os: linux
@@ -55,13 +55,13 @@ matrix:
         - MB_PYTHON_VERSION=2.7
         - PLAT=i686
         - UNICODE_WIDTH=16
-    - os: linux
-      env:
-        - MB_PYTHON_VERSION=3.3
-    - os: linux
-      env:
-        - MB_PYTHON_VERSION=3.3
-        - PLAT=i686
+#    - os: linux
+#      env:
+#        - MB_PYTHON_VERSION=3.3
+#    - os: linux
+#      env:
+#        - MB_PYTHON_VERSION=3.3
+#        - PLAT=i686
     - os: linux
       env:
         - MB_PYTHON_VERSION=3.4
@@ -128,3 +128,10 @@ script:
     #    ${TRAVIS_BUILD_DIR}/wheelhouse/
     #    --no-update-index
     #    wheels
+deploy:
+  provider: releases
+  api_key: "1b0f35be02b3a69d59c11740461d456dd1dce0e9"
+  file: "./wheelhouse/LFC-0.1-cp27-cp27mu-manylinux1_x86_64.whl"
+  skip_cleanup: true
+  on:
+    tags: true
