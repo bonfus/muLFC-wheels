@@ -85,13 +85,14 @@ install:
 script:
 - install_run $PLAT
 before_deploy:
-  - export RELEASE_PKG_FILE=$(ls /home/travis/build/bonfus/muLFC-wheels/wheelhouse/*.whl)
-  - echo "deploying $RELEASE_PKG_FILE to GitHub releases"
+- export RELEASE_PKG_DIR=$(ls /home/travis/build/bonfus/muLFC-wheels/muLFC)
+- echo "deploying $RELEASE_PKG_DIR to GitHub releases"
+- cd "${RELEASE_PKG_FILE}"
 deploy:
-  provider: releases
-  file_glob: true
-  api_key:
-    secure: TFKe3rDsFs5IKShV0FMDBOxMkWhzr1lqpjdcrGH6PsViOlR1vxdxkrLfhtZpKXwB+MArBO/rbi9xqFjo4/YomTiYlWryhccoVZA95BJcvt1MbflUCJiQkKWYipQ2y+iapdOv04FEXV3T95e7uXwiIyEJFB1740p5PQjXTbhB4taTGIr6uv7yNwNfNWZD7ypKZZ0YoQt4grWCcyAHS8qY565ct2xHyf5J5hJ2iC6YFnQcjTtckA/LfW5ZM5tt7jYMcnqYjIPTSS7HuviOfys2MoMJBMdluSDbtT4KN+WvgV/Faw3NPqfXHK4QiilaGTxqQDX8pb+2SZKWYV8d8l3sK9H5/QXoYgLggYT+qcHdaf/+ch7huHNAx9HferDbU8Sgqnm3DuGRA/xZKbjOjclCXqdgMU2ZQX+byCcX6uEv8iPkAi2TkS/rucVoThsCR4E86lpWTyQ2qwfUhaUTx/QHyxnZUAeIvmIo7GUaP3Zpe1MU0Bo0JzW+xQ56Vdsyo8e5vD3pD71t0FDEBfUx46sjwyw9f+Ap01hyjvLq1YehdMLjM30uKZWK63FCJ7/RpLhiSUDvmGqteG6sTS/A6xNJ/brMXhrE0vPITKiaI4nnkJgxDqwSkxYOwrvgVUagO+/b6isbWGZYsuREMTjgzY34v/1s5zoD0YesDV918JcW80c=
-  file: "${RELEASE_PKG_FILE}"
-  on:
-    repo: bonfus/muLFC-wheels
+  provider: pypi
+  user: pietro.bonfa
+  password:
+    secure: PusPITgwi/MbOFLl3yQEZTqAUOQl7bia7yQKXkER78RCo2DxwLJT802tPUq1gh7LQ3Az4p+gePl4+HZobCsGQgJFgkiWrOVg3CbszRhwGeFTDa/BjUxKpAN+ZVWnJ2IqErOY9vmcIZ9L5xxilGlhVKhPn7MdapwFwhdc+PzyOH6Gf1+M+s0MZP1p3yKHIl2yJXK460bbObzQm3uQJPLY9N++h+/eufFIQHc9jdj14rC3lgUT2xum9T1RgI52HF3gpjDZ5Fi2UESYIwWUd9vSny7pvOQ4hIQHg6y4jGLixzJBgD4ibKIm3gh483dIKH4/YjIzTYCIlq1SASmUSq3g1EKgfg54x9crIdtNbaX/wyx/s3ObVUPy3++LVaPFYlCvvwKuPuAyGv73lkZAgMBROPIlGAo/WstoiveD/zxEaYOVzeHpIm/fNQdNU0WLVqebQ/KPvJ3QkIf4IXprslv2iK9JIuBGoMFfiJTSPE4L2d/TP7WwCeG/eIZnQtEcC9amjrQbxwzFTtvyvxShSZH7bye2dT+S2lw6atZ6AHTqi9Un8+xXz/nCGWBR0Wshq49ChAPuvLozhlZS+Kdclk0ONCR/oJJYfMPR1Ty4DCa5oYyvVrtcyQNbAA43l2yzxbU0OWbBdVJSoZV1t1WqSSAf5mVTpv9c9IgJwX38iNWpabQ=
+  server: https://test.pypi.org/legacy/
+  distributions: "sdist bdist_wheel"
+  
