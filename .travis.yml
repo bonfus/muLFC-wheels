@@ -86,7 +86,7 @@ before_deploy:
 deploy:
   provider: packagecloud
   repository: wheels
-  username: muLFC
+  username: packagecloud@bnf.33mail.com
   skip_cleanup: true
   local-dir: /home/travis/build/bonfus/muLFC-wheels/wheelhouse
   package_glob: "*.whl"
