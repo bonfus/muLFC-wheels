@@ -80,15 +80,14 @@ script:
 before_deploy:
 - export RELEASE_PKG_DIR=$(ls /home/travis/build/bonfus/muLFC-wheels/wheelhouse)
 - echo "deploying $RELEASE_PKG_DIR to GitHub releases"
-- cd "${RELEASE_PKG_FILE}"
+- cd "${RELEASE_PKG_DIR}"
 - ls
 
 deploy:
   provider: packagecloud
   repository: wheels
-  username: packagecloud@bnf.33mail.com
+  username: muLFC
   skip_cleanup: true
   local-dir: /home/travis/build/bonfus/muLFC-wheels/wheelhouse
   package_glob: "*.whl"
-  token:
-    secure: ZbdW3nYmUBaU2DBhIUUBYWPcDP5NkUMSUeEmd/aQHxgBErpKdtjs5CRp9c2bXTamshs8lyXy0TicS8DsVpD9I797AxuPF7xzLPaJOsw5KrKhmdRv1rrbANHi9hnkHl4bWFldTzh/AwdWZinrk8Lt7G/zEa/oLD1ICsfXPKhZ5z5crH/17a+DjXFfbt7y3oNsmlv3KAWLa25VnEtuSnqr4Ab7a4veOWNVO4RPDMkCmlMW5d/mEykLNjrNTgVnTuUZ5B9mReE6aWDBEV+unanEjPWDVgY+GS9n2NRxcCmCRhVEz3JUsrz0y0TXl/qGRXaJJShDN0GE6xKp2x2SI9EuCswLxhHNxp0+1BXkx9GP7Ngoj+bTnq/Z0cxZ0uVFtUYe2mnchyuv4w0ZNWnLVpwHKKamRVtap1d2TNWWnx5LjomKFA4e1THAFPWrmGLn0welbBSGF8FZepdcjpcMTsb55GlI7SQ59LNuW7OWG2Z/C4euq4uFMbF135bybv6Su5WUwM2YvsiDaNcb9nKui62RbSO0NA1Ntth8hQbsqhVYTb4WHH45kBqk57ngvbRLwMjm10QEOugbSNjbj3HXQMyWaoHHkFzDIDzJFUyasgXeJQjIIOoC4499NbooN8+v73PCRnWzVvHGBzhvSbZf8rGrzKKM5LEaLpzq0u4Drj1ciMY=
+  token: ${PACKAGECLOUD_TOKEN}
