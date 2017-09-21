@@ -86,6 +86,7 @@ deploy:
   provider: packagecloud
   repository: wheels
   username: muLFC
+  dist: "ubuntu/precise"
   skip_cleanup: true
   local-dir: /home/travis/build/bonfus/muLFC-wheels/wheelhouse
   package_glob: "*.whl"
