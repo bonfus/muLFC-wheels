@@ -1,15 +1,13 @@
+language: python
+python: 3.5
+
 env:
   global:
   - REPO_DIR=muLFC
-  - BUILD_COMMIT=78c8fd1d22e1aba8beb732cf8ffcf9da30c86295
   - BUILD_DEPENDS="numpy"
   - TEST_DEPENDS="numpy"
   - PLAT=x86_64
   - UNICODE_WIDTH=32
-  - WHEELHOUSE_UPLOADER_USERNAME=travis-worker
-  - secure: MNKyBWOzu7JAUmC0Y+JhPKfytXxY/ADRmUIMEWZV977FLZPgYctqd+lqel2QIFgdHDO1CIdTSymOOFZckM9ICUXg9Ta+8oBjSvAVWO1ahDcToRM2DLq66fKg+NKimd2OfK7x597h/QmUSl4k8XyvyyXgl5jOiLg/EJxNE2r83IA=
-language: python
-python: 3.5
 sudo: required
 dist: trusty
 services: docker
@@ -18,14 +16,6 @@ matrix:
   - python: 3.5
   include:
   - os: linux
-    env: MB_PYTHON_VERSION=2.7
-  - os: linux
-    env:
-    - MB_PYTHON_VERSION=2.7
-  - os: linux
-    env:
-    - MB_PYTHON_VERSION=2.7
-  - os: linux
     env:
     - MB_PYTHON_VERSION=2.7
   - os: linux
@@ -34,18 +24,21 @@ matrix:
   - os: linux
     env:
     - MB_PYTHON_VERSION=3.4
+    - PLAT=i686
   - os: linux
     env:
     - MB_PYTHON_VERSION=3.5
   - os: linux
     env:
     - MB_PYTHON_VERSION=3.5
+    - PLAT=i686
   - os: linux
     env:
     - MB_PYTHON_VERSION=3.6
   - os: linux
     env:
     - MB_PYTHON_VERSION=3.6
+    - PLAT=i686
   - os: osx
     #    language: generic
     env:
