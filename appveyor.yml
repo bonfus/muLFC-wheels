@@ -88,12 +88,3 @@ build_script:
 artifacts:
     - path: "%REPO_DIR%\\dist\\*"
 
-deploy:
-  provider: packagecloud
-  repository: wheels
-  username: muLFC
-  dist: "python"
-  skip_cleanup: true
-  local-dir: "%REPO_DIR%\\dist\\*"
-  package_glob: "*.whl"
-  token: ${PACKAGECLOUD_TOKEN}
