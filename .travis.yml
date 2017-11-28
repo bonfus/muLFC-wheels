@@ -4,7 +4,7 @@ python: 3.5
 env:
   global:
   - REPO_DIR=muLFC
-  - BUILD_COMMIT=3fac97cf364a1e5e36741f98bfb97ceb289847ec
+  - BUILD_COMMIT=567485f5ab21339a80499655a5317653dfe5c9e7
   - BUILD_DEPENDS="numpy"
   - TEST_DEPENDS="numpy"
   - PLAT=x86_64
