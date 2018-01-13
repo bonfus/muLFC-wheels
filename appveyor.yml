@@ -94,7 +94,7 @@ test_script:
     - cmd: "%CMD_IN_ENV% python setup.py test"
 
 on_success:
-    - conda install -c conda-forge twine
+    - conda install --yes -c conda-forge twine
     - cmd: "echo [pypi] > %USERPROFILE%\\.pypirc"
     - cmd: "echo repository=https://testpypi.python.org/pypi >> %USERPROFILE%\\.pypirc"
     - cmd: "echo username: pietro.bonfa >> %USERPROFILE%\\.pypirc"
