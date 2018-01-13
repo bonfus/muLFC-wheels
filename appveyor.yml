@@ -1,6 +1,6 @@
 environment:
   pypi:
-    secure: vN9TG7Iq3nV04uK/4+ilbg==
+    secure: 1b5ZFYDx9UtdTwMVJsjrFw==
   global:
     REPO_DIR: muLFC
     PACKAGE_NAME: muLFC
