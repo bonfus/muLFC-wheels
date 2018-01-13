@@ -1,8 +1,10 @@
 environment:
+  pypi:
+    secure: XnOcNP3T2Njac4gnKgGvTw==
   global:
     REPO_DIR: muLFC
     PACKAGE_NAME: muLFC
-    BUILD_COMMIT: 567485f5ab21339a80499655a5317653dfe5c9e7
+    BUILD_COMMIT: 66a746c9f56bccc4fe09ceec6226ca3379e378cf
 
     # SDK v7.0 MSVC Express 2008's SetEnv.cmd script will fail if the
     # /E:ON and /V:ON options are not enabled in the batch script intepreter
@@ -88,3 +90,15 @@ build_script:
 artifacts:
     - path: "%REPO_DIR%\\dist\\*"
 
+test_script:
+    - cmd: "%CMD_IN_ENV% python setup.py test"
+
+after_test:
+    - cmd: "echo [pypi] > %USERPROFILE%\\.pypirc"
+    - cmd: "echo username: pietro.bonfa >> %USERPROFILE%\\.pypirc"
+    - cmd: "echo password: %pypi% >> %USERPROFILE%\\.pypirc"
+    - "%CMD_IN_ENV% python setup.py bdist_wheel"
+    - conda install --yes "twine"
+
+on_success:
+    - cmd: "%CMD_IN_ENV% twine upload dist\\*.whl"
