@@ -21,45 +21,49 @@ matrix:
     - MB_PYTHON_VERSION=2.7
   - os: linux
     env:
-    - MB_PYTHON_VERSION=3.4
-  - os: linux
-    env:
-    - MB_PYTHON_VERSION=3.4
-    - PLAT=i686
-  - os: linux
-    env:
-    - MB_PYTHON_VERSION=3.5
-  - os: linux
-    env:
-    - MB_PYTHON_VERSION=3.5
-    - PLAT=i686
-  - os: linux
-    env:
-    - MB_PYTHON_VERSION=3.6
-  - os: linux
-    env:
-    - MB_PYTHON_VERSION=3.6
-    - PLAT=i686
-  - os: osx
-    #    language: generic
-    env:
     - MB_PYTHON_VERSION=2.7
-  - os: osx
-    #    language: generic
+    - PLAT=i686
+  - os: linux
     env:
     - MB_PYTHON_VERSION=3.4
-  - os: osx
-    #    language: generic
+  - os: linux
+    env:
+    - MB_PYTHON_VERSION=3.4
+    - PLAT=i686
+  - os: linux
     env:
     - MB_PYTHON_VERSION=3.5
-  - os: osx
-    #    language: generic
+  - os: linux
+    env:
+    - MB_PYTHON_VERSION=3.5
+    - PLAT=i686
+  - os: linux
     env:
     - MB_PYTHON_VERSION=3.6
-  - os: osx
-    #    language: generic
+  - os: linux
     env:
-    - MB_PYTHON_VERSION=pypy-5.7
+    - MB_PYTHON_VERSION=3.6
+    - PLAT=i686
+#  - os: osx
+#    #    language: generic
+#    env:
+#    - MB_PYTHON_VERSION=2.7
+#  - os: osx
+#    #    language: generic
+#    env:
+#    - MB_PYTHON_VERSION=3.4
+#  - os: osx
+#    #    language: generic
+#    env:
+#    - MB_PYTHON_VERSION=3.5
+#  - os: osx
+#    #    language: generic
+#    env:
+#    - MB_PYTHON_VERSION=3.6
+#  - os: osx
+#    #    language: generic
+#    env:
+#    - MB_PYTHON_VERSION=pypy-5.7
 before_install:
 - ls && pwd
 - source multibuild/common_utils.sh
@@ -77,11 +81,10 @@ before_deploy:
 - pwd
 
 deploy:
-  provider: packagecloud
-  repository: wheels
-  username: muLFC
-  dist: "python"
+  provider: pypi
+  user: pietro.bonfa
   skip_cleanup: true
-  local-dir: /home/travis/build/bonfus/muLFC-wheels/wheelhouse
-  package_glob: "*.whl"
-  token: ${PACKAGECLOUD_TOKEN}
+  password:
+    secure: "O8YpDBTTWCxMFSekcXRH7PRaEMxdP6rP1OS74ZPgsMhg6IvV0/PapwadGV1qZrb88qY/WcFCa8s4NsiKluoAmvPQuvz3kGYMorbpptJ2ZfsHJRmbtGWdw3uys7O+IGP0jv/QlglOc8DKV1rjXvubqA+zjL3ejIT+L4UHthVwmT5LeJN309pxCpnpvViTuGQM4hxg1Mh4oNuxfbEOo8TSyaje+OQNtCiMx4ctV/6tTmaAu9k0N5zyZCdz2wpbUIVOv6delWyddF9TldQazQ4mmeJQcsl1S501oYUgwsKbtidrRukW2j0hrJeGg0mGzT/KakvWhwqaHdPsI00YeN1htZQnucGo0j7Isz+mUWfzP/CnRFgEckSSDgexkZxGFir4pfEw+xtt256YW3gv8M4x0jHLMg5sUTZsBes0HidKqs9Dq5wl6EaKlnJjGk+DCkuJemAVMLUEQOb6piB+dOWB+0Yy81psCyKfri8k6iBU+KHxxwPSbJ1Ut8IStk1tumvtuly8r4q+0OMLmtI783tdyqpbkeQSMYnq6sUIImiysjTvSwJY0FYbAw8vwAUbv76jOhfUlM14LzShVMLR/i5DdLRqfQGNdu5AIj5PYVK7G7L636tdmEli8iyDsNB4yS7uQy8186iGGacEAzlmFgbT0tf3OUKfrpq92Uzhf1WpUdY="
+  server: https://test.pypi.org/legacy/
+  distributions: "bdist_wheel"
