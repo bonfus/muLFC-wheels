@@ -4,7 +4,7 @@ environment:
   global:
     REPO_DIR: muLFC
     PACKAGE_NAME: muLFC
-    BUILD_COMMIT: 66a746c9f56bccc4fe09ceec6226ca3379e378cf
+    BUILD_COMMIT: dcdf3f6a4734005bc3c18f464a3135d965763546
 
     # SDK v7.0 MSVC Express 2008's SetEnv.cmd script will fail if the
     # /E:ON and /V:ON options are not enabled in the batch script intepreter
