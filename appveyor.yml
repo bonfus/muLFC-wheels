@@ -96,8 +96,8 @@ test_script:
 on_success:
     - conda install --yes -c conda-forge twine
     - cmd: "echo [pypi] > %USERPROFILE%\\.pypirc"
-    # cmd: "echo repository=https://test.pypi.org/legacy/ >> %USERPROFILE%\\.pypirc"
     - cmd: "echo username: pietro.bonfa >> %USERPROFILE%\\.pypirc"
     - cmd: "echo password: %pypi% >> %USERPROFILE%\\.pypirc"
     - "%CMD_IN_ENV% twine upload dist\\*.whl"
     - cmd: "del %USERPROFILE%\\.pypirc"
+    # "echo repository=https://test.pypi.org/legacy/ >> %USERPROFILE%\\.pypirc"
