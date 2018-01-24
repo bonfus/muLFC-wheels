@@ -1,5 +1,8 @@
 language: python
 python: 3.5
+sudo: required
+dist: trusty
+services: docker
 
 env:
   global:
@@ -9,9 +12,8 @@ env:
   - TEST_DEPENDS="numpy"
   - PLAT=x86_64
   - UNICODE_WIDTH=32
-sudo: required
-dist: trusty
-services: docker
+
+
 matrix:
   exclude:
   - python: 3.5
@@ -69,16 +71,19 @@ before_install:
 - source multibuild/common_utils.sh
 - source multibuild/travis_steps.sh
 - before_install
+
 install:
 - clean_code $REPO_DIR $BUILD_COMMIT
 - build_wheel $REPO_DIR $PLAT
-- ls && pwd && ls /home/travis/build/bonfus/muLFC-wheels/wheelhouse/
+- ls && pwd
+
 script:
 - install_run $PLAT
+
 before_deploy:
-- export RELEASE_PKG_FILE=$(ls /home/travis/build/bonfus/muLFC-wheels/wheelhouse)
-- echo "deploying $RELEASE_PKG_FILE to PyPI releases"
-- ln -s /home/travis/build/bonfus/muLFC-wheels/wheelhouse /home/travis/build/bonfus/muLFC-wheels/dist
+- export RELEASE_PKG_FILE=$(ls ./wheelhouse)
+- echo "deploying $RELEASE_PKG_FILE to PyPI"
+- mkdir -p dist; cp wheelhouse/*.whl dist;
 
 deploy:
   provider: pypi
