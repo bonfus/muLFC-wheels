@@ -7,7 +7,7 @@ services: docker
 env:
   global:
   - REPO_DIR=muLFC
-  - BUILD_COMMIT=7860543a0ac6fd3de6b3b5ac5639a51b44c37835
+  - BUILD_COMMIT=350c21bcd42e2e75b70dafbc74d613df39497e54
   - BUILD_DEPENDS="numpy==1.8.0"
   - TEST_DEPENDS="numpy==1.8.0"
   - PLAT=x86_64
