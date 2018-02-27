@@ -8,5 +8,6 @@ function pre_build {
 }
 function run_tests {
     python --version
+    cd .. && pwd
     python -m pytest
 }
