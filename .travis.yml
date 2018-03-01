@@ -7,7 +7,7 @@ services: docker
 env:
   global:
   - REPO_DIR=muLFC
-  - BUILD_COMMIT=b6916b74a1098b7c2de6a94de6e8fdd3f9c58d81
+  - BUILD_COMMIT=v0.0.2
   - BUILD_DEPENDS="numpy==1.8.0"
   - TEST_DEPENDS="numpy==1.12.0 pytest"
   - PLAT=x86_64
@@ -85,12 +85,12 @@ before_deploy:
 - echo "deploying $RELEASE_PKG_FILE to PyPI"
 - mkdir -p dist; cp wheelhouse/*.whl dist;
 
-#deploy:
-#  provider: pypi
-#  user: pietro.bonfa
-#  skip_cleanup: true
-#  password:
-#    secure: "Nf136jOD01pKEir2ltIDmtIpVvq0yblEfJzL5P8ct0BLD6Wjgqbos0HJZLBKPFWEId+2OcM66zB/rVoDTdpUFp01Wlck4D2Un5sSt+ExlaqVdzzDXbRs88s5+AUGqeUODShxhoLBRLWOk1sQrb4KROcSHYPr9GHUUWTnmCUuKOyiSFcyrxYRVQF96aWTO0VivIGSj+es9qSORGOOtj9bOQqQgiDtNkKGSMnJcTqNvFuiyYnZtAAI4xa/f30688BxQ5F9g8CStWjFwOyUGIuotTaHddHq7z6UlpfalSvH0Fltz+ED0Q1XfU44egWacWr1gqvh4prjvh890Hybq/VbTPl69g+WzJ8OkgU56ageWiZyx/sGwVGb5VV/gE498sTa0vMVI7DilriZg1Mgry7RBfSdQgPPxURT5ZcU8XMC5YGfRDblqqtDg/TuTO8F+xlB/FgQct67zTcz+O24lunxTf8TKAyEs24ECLO2a+HdZfu39MtIc3chrFNDk4298+ixCiddqwDwUqMG3TD7QyaTfoWF7mLp94Sq3bgSbVwtEi9h9a+SwgC0IT1FH9P+4KGYg8jPAXYKuaH3Eto2Sv9dUwiDCLN6uZQ94l7lu9lM+9tpRLXYEJvhBBpdPnjjUcCVcjKxu87kqoOMOqOLIQ4HLPXz3+6yKHSsqT05Ae+bBWg="
-#  distributions: bdist_wheel
-#  #server: https://test.pypi.org/legacy/
+deploy:
+  provider: pypi
+  user: pietro.bonfa
+  skip_cleanup: true
+  password:
+    secure: "Nf136jOD01pKEir2ltIDmtIpVvq0yblEfJzL5P8ct0BLD6Wjgqbos0HJZLBKPFWEId+2OcM66zB/rVoDTdpUFp01Wlck4D2Un5sSt+ExlaqVdzzDXbRs88s5+AUGqeUODShxhoLBRLWOk1sQrb4KROcSHYPr9GHUUWTnmCUuKOyiSFcyrxYRVQF96aWTO0VivIGSj+es9qSORGOOtj9bOQqQgiDtNkKGSMnJcTqNvFuiyYnZtAAI4xa/f30688BxQ5F9g8CStWjFwOyUGIuotTaHddHq7z6UlpfalSvH0Fltz+ED0Q1XfU44egWacWr1gqvh4prjvh890Hybq/VbTPl69g+WzJ8OkgU56ageWiZyx/sGwVGb5VV/gE498sTa0vMVI7DilriZg1Mgry7RBfSdQgPPxURT5ZcU8XMC5YGfRDblqqtDg/TuTO8F+xlB/FgQct67zTcz+O24lunxTf8TKAyEs24ECLO2a+HdZfu39MtIc3chrFNDk4298+ixCiddqwDwUqMG3TD7QyaTfoWF7mLp94Sq3bgSbVwtEi9h9a+SwgC0IT1FH9P+4KGYg8jPAXYKuaH3Eto2Sv9dUwiDCLN6uZQ94l7lu9lM+9tpRLXYEJvhBBpdPnjjUcCVcjKxu87kqoOMOqOLIQ4HLPXz3+6yKHSsqT05Ae+bBWg="
+  distributions: bdist_wheel
+  #server: https://test.pypi.org/legacy/
 
