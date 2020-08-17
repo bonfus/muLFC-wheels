@@ -18,22 +18,8 @@ matrix:
   exclude:
   - python: 3.5
   include:
-#  - os: linux
-#    env:
-#    - MB_PYTHON_VERSION=2.7
-#  - os: linux
-#    env:
-#    - MB_PYTHON_VERSION=2.7
-#    - PLAT=i686
-#  - os: linux
-#    env:
-#    - MB_PYTHON_VERSION=3.4
-#  - os: linux
-#    env:
-#    - MB_PYTHON_VERSION=3.4
-#    - PLAT=i686
-#  - os: linux
-#    env:
+  - os: linux
+    env:
     - MB_PYTHON_VERSION=3.6
   - os: linux
     env:
@@ -53,10 +39,6 @@ matrix:
     env:
     - MB_PYTHON_VERSION=3.8
     - PLAT=i686
-#  - os: osx
-#    language: generic
-#    env:
-#    - MB_PYTHON_VERSION=2.7
   - os: osx
     language: generic
     env:
@@ -69,10 +51,6 @@ matrix:
     language: generic
     env:
     - MB_PYTHON_VERSION=3.8
-#  - os: osx
-#    #    language: generic
-#    env:
-#    - MB_PYTHON_VERSION=pypy-5.7
 before_install:
 - ls && pwd
 - source multibuild/common_utils.sh
